@@ -1,0 +1,1433 @@
+/* Base styles */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background-color: #f8fafc;
+  padding: 40px;
+  margin: 0;
+  color: #334155;
+  line-height: 1.5;
+  padding-bottom: 50px !important; /* Ensure content doesn't hide behind footer */
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  background: #fff;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+}
+
+/* Typography */
+h2 {
+  margin-top: 0;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 26px;
+  letter-spacing: -0.01em;
+  font-family: 'Playfair Display', serif;
+  
+  /* Enhanced 3D Effect - Deeper Chiseled Inset */
+  color: var(--heading-color);
+  text-shadow: 
+    -1px -1px 0px rgba(255,255,255,0.9), 
+    -2px -2px 0px rgba(255,255,255,0.5), 
+    -3px -3px 0px rgba(255,255,255,0.2), 
+    
+    1px 1px 0px rgba(0,0,0,0.2), 
+    2px 2px 0px rgba(0,0,0,0.15), 
+    3px 3px 0px rgba(0,0,0,0.1),
+    4px 4px 0px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] h2 {
+  color: var(--heading-color);
+  text-shadow: 
+    -1px -1px 0px rgba(0,0,0,0.9), 
+    -2px -2px 0px rgba(0,0,0,0.5), 
+    -3px -3px 0px rgba(0,0,0,0.2), 
+    
+    1px 1px 0px rgba(255,255,255,0.2), 
+    2px 2px 0px rgba(255,255,255,0.15), 
+    3px 3px 0px rgba(255,255,255,0.1),
+    4px 4px 0px rgba(255,255,255,0.05);
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+/* Form elements - inline layout fixes */
+select, input[type="text"] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+select {
+  padding: 10px 30px 10px 12px;
+  font-size: 14px;
+  font-family: monospace;
+  border: 2px solid #475569;
+  border-radius: 0px;
+  background-color: #ffffff;
+  color: #475569;
+  box-shadow: -4px 4px 0 #15191f;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  margin-right: 10px;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+}
+
+select:focus {
+  border-color: #475569;
+  box-shadow: -2px 2px 0 #000000;
+  outline: none;
+  transform: translateY(-1px);
+}
+
+select:hover {
+  box-shadow: -2px 2px 0 #000000;
+  transform: translateY(-1px);
+}
+
+input[type="text"] {
+  resize: both;
+  overflow: auto;
+  min-width: 120px;
+  min-height: 40px;
+  background-color: var(--container-bg);
+  border: none; /* No explicit border */
+  border-radius: 0px; /* Kept sharp for the grooved look */
+  color: var(--text-color);
+  padding: 8px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  
+  /* Deep inset shadow for a grooved look with more pronounced bluish tint */
+  box-shadow: inset 0 0 10px rgba(50, 80, 120, 0.3), /* Strong inner shadow, more saturated dark blue-gray */
+              inset 0 0 0 1px var(--container-border); /* Subtle inner border, uses theme color */
+  transition: all 0.2s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  /* Adjust shadow to slightly lighten the "groove" on focus and highlight with theme blue */
+  box-shadow: inset 0 0 8px rgba(50, 80, 120, 0.2), /* Slightly lighter dark blue-gray */
+              inset 0 0 0 1px var(--select-focus); /* Highlight with theme's select blue */
+}
+
+input[type="text"]:hover {
+  box-shadow: inset 0 0 10px rgba(50, 80, 120, 0.3), /* Strong inner shadow, more saturated dark blue-gray */
+              inset 0 0 0 1px var(--container-border); /* Subtle inner border, uses theme color */
+}
+
+
+textarea {
+  width: 100%;
+  height: 180px;
+  font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 14px;
+  padding: 14px;
+  resize: both;
+  overflow: auto;
+  min-width: 120px;
+  min-height: 40px;
+  background-color: var(--container-bg);
+  border: none; /* No explicit border */
+  border-radius: 0px; /* Kept sharp for the grooved look */
+  color: var(--text-color);
+  
+  /* Deep inset shadow for a grooved look with more pronounced bluish tint */
+  box-shadow: inset 0 0 10px rgba(50, 80, 120, 0.3), /* Strong inner shadow, more saturated dark blue-gray */
+              inset 0 0 0 1px var(--container-border); /* Subtle inner border, uses theme color */
+  transition: all 0.2s ease;
+  margin-top: 15px;
+}
+
+textarea:focus {
+  outline: none;
+  /* Adjust shadow to slightly lighten the "groove" on focus and highlight with theme blue */
+  box-shadow: inset 0 0 8px rgba(50, 80, 120, 0.2), /* Slightly lighter dark blue-gray */
+              inset 0 0 0 1px var(--select-focus); /* Highlight with theme's select blue */
+}
+
+textarea:hover {
+  box-shadow: inset 0 0 10px rgba(50, 80, 120, 0.3), /* Strong inner shadow, more saturated dark blue-gray */
+              inset 0 0 0 1px var(--container-border); /* Subtle inner border, uses theme color */
+}
+
+/* Buttons - consistent styling */
+button {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #ffffff;
+  color: #475569;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 8px 0 0;
+}
+
+#convertBtn {
+  background-color: #ffffff;
+  color: #475569;
+  font-family: monospace;
+  border: 2px solid #475569;
+  padding: 10px 22px;
+  border-radius: 0px;
+  box-shadow: -4px 4px 0 #15191f;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+  margin-left: 0px;
+  margin-top: 10px;
+}
+
+#convertBtn:hover {
+  box-shadow: -2px 2px 0 #000000;
+  background-color: #f4f4f4;
+  transform: translateY(-1px);
+}
+
+#convertBtn:active {
+  box-shadow: -1px 1px 0 #000000;
+  transform: translate(-3px, 3px);
+}
+
+/* Copy table button styled to match convertBtn */
+.copy-all-btn {
+  background-color: #ffffff;
+  color: #475569;
+  font-family: monospace;
+  border: 2px solid #475569;
+  padding: 10px 22px;
+  border-radius: 0px;
+  box-shadow: -4px 4px 0 #15191f;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 12px 8px 12px 0;
+}
+
+.copy-all-btn:hover {
+  box-shadow: -2px 2px 0 #000000;
+  background-color: #f4f4f4;
+  transform: translateY(-1px);
+}
+
+.copy-all-btn:active {
+  box-shadow: -1px 1px 0 #000000;
+  transform: translate(-3px, 3px);
+}
+
+/* Table styles */
+table {
+  width: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 12px auto;
+  table-layout: fixed;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #212122;
+}
+
+th, td {
+  border: 0.1px solid #0c2844;
+  padding: 10px 35px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+th {
+  background-color: var(--header-bg) !important;
+  color: var(--header-text) !important;
+  border-bottom: 3px solid var(--header-border) !important;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 14px 16px;
+  position: relative;
+  border-right: 1px solid var(--header-border);
+  box-shadow: 0 2px 3px rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+  min-width: 50px; /* Prevent columns from getting too narrow */
+}
+
+[data-theme="dark"] th {
+  box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+  border-right-color: #475569;
+}
+
+td {
+  background-color: #ffffff;
+  color: #334155;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 14px;
+  transition: background-color 0.15s ease;
+}
+
+/* Zebra striping - alternate row colors */
+tr:nth-child(odd) td {
+  background-color: var(--zebra-odd);
+}
+
+tr:nth-child(even) td {
+  background-color: var(--zebra-even);
+}
+
+/* Header stays the same */
+tr:first-child td,
+tr:first-child th {
+  background-color: var(--th-bg) !important;
+}
+
+/* Hover effect (will override zebra) */
+tr:hover td {
+  background-color: var(--hover-bg) !important;
+}
+
+tr:hover td {
+  background-color: #f8fafc;
+}
+
+/* Warning message */
+#parseWarning {
+  font-weight: 500;
+  background-color: #fee2e2;
+  padding: 12px 16px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #b91c1c;
+  margin: 12px 0;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(185, 28, 28, 0.1);
+}
+
+/* Copy button */
+.copy-btn {
+  background: none;
+  border: 1px solid #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy-btn:hover {
+  color: #3b82f6;
+}
+
+/* Toast notification - Changed to green */
+#toast {
+  position: fixed;
+  bottom: 60px;
+  right: 10px;
+  background-color: #1eac52;
+  color: #0f172a;
+  font-family: monospace;
+  padding: 10px 18px;
+  border: 2px solid #0f172a;
+  border-radius: 0;
+  opacity: 0;
+  pointer-events: none;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 4px 4px 0 #0f172a;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+#toast.show {
+  opacity: 0.8;
+  transform: translateY(0);
+}
+
+#error-toast {
+  position: fixed;
+  bottom: 80px; /* Adjusted to be 20px higher than before */
+  right: 30px;
+  background-color: #ca5454;
+  color: #ffffff;
+  font-family: monospace;
+  padding: 10px 18px;
+  border: 2px solid #352d2d;
+  border-radius: 0;
+  opacity: 0;
+  pointer-events: none;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 4px 4px 0 #0c0c0c;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+#error-toast.show {
+  opacity: 0.8;
+  transform: translateY(0);
+}
+
+#error-toast.hide {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* SVG icon in copy button */
+.copy-btn svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.copy-btn:hover svg {
+  transform: scale(1.1);
+}
+
+.copy-btn:hover svg path {
+  fill: #3b82f6;
+}
+
+/* Form controls group - for keeping elements on same line */
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  margin-right: 10px;
+  margin-bottom: 0;
+}
+
+.form-group select, 
+.form-group input[type="text"],
+.form-group button {
+  margin-right: 10px;
+}
+
+/* Add this section to your styles.css */
+:root {
+  --bg-color: #f8fafc;
+  --text-color: #334155;
+  --container-bg: #fff;
+  --container-border: #e2e8f0;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --heading-color: #1a202c;
+  --label-color: #475569;
+  --select-border: #475569;
+  --select-focus: #3b82f6;
+  --th-bg: #e2e8f0;
+  --th-border: #cbd5e1;
+  --td-bg: #ffffff;
+  --td-border: #e2e8f0;
+  --hover-bg: #f0f4f8;
+  --input-bg: #ffffff;
+  --zebra-odd: #f8fafc;
+  --zebra-even: #ffffff;
+  
+  /* Header colors for light mode */
+  --header-bg: #e2e8f0; /* Light background for headers */
+  --header-text: #475569; /* Dark text for headers */
+  --header-border: #cbd5e1; /* Light border for headers */
+
+  --copyright-bg-light: #e2e8f0; /* Light mode copyright background */
+  --copyright-text-light: #475569; /* Light mode copyright text */
+  --copyright-border-light: #cbd5e1; /* Light mode copyright border */
+}
+
+/* Dark mode variables */
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --container-bg: #2d2d2d;
+  --container-border: #444;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --heading-color: #f0f0f0;
+  --label-color: #b0b0b0;
+  --select-border: #555;
+  --select-focus: #4a90e2;
+  --th-bg: #3a3a3a;
+  --th-border: #444;
+  --td-bg: #2d2d2d;
+  --td-border: #444;
+  --hover-bg: #3a4a6b;
+  --input-bg: #3a3a3a;
+  --zebra-odd: #2d2d2d;
+  --zebra-even: #3a3a3a;
+
+  /* Header colors for dark mode */
+  --header-bg: #334155; /* Dark background for headers */
+  --header-text: #f8fafc; /* Light text for headers */
+  --header-border: #04042c; /* Dark border for headers */
+}
+
+/* Dark Mode Element Styles */
+[data-theme="dark"] body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .container {
+  background: var(--container-bg);
+  border-color: var(--container-border);
+  box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+[data-theme="dark"] h2 {
+  color: var(--heading-color);
+  text-shadow:
+    -1px -1px 0px rgba(0,0,0,0.9),
+    -2px -2px 0px rgba(0,0,0,0.5),
+    -3px -3px 0px rgba(0,0,0,0.2),
+    1px 1px 0px rgba(255,255,255,0.2),
+    2px 2px 0px rgba(255,255,255,0.15),
+    3px 3px 0px rgba(255,255,255,0.1),
+    4px 4px 0px rgba(255,255,255,0.05);
+}
+
+[data-theme="dark"] label {
+  color: var(--label-color);
+}
+
+[data-theme="dark"] select {
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border-color: var(--select-border);
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b0b0b0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+[data-theme="dark"] select:focus {
+  border-color: var(--select-border); /* Consistent with light mode */
+  box-shadow: -2px 2px 0 #000000; /* Consistent with light mode */
+}
+
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] textarea {
+  background-color: var(--container-bg);
+  color: var(--text-color);
+  /* Dark mode grooved look with more pronounced light bluish tint */
+  box-shadow: inset 0 0 10px rgba(150, 190, 230, 0.2), /* Strong inner shadow, more saturated light blue-gray */
+              inset 0 0 0 1px var(--container-border); /* Uses theme border */
+}
+
+[data-theme="dark"] input[type="text"]:focus,
+[data-theme="dark"] textarea:focus {
+  /* Adjust dark mode focus shadows */
+  box-shadow: inset 0 0 8px rgba(150, 190, 230, 0.12), /* Slightly lighter light blue-gray */
+              inset 0 0 0 1px var(--select-focus); /* Highlight with theme's select blue */
+}
+
+[data-theme="dark"] button {
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border: 2px solid var(--select-border);
+  box-shadow: -4px 4px 0 var(--select-border);
+}
+
+[data-theme="dark"] button:hover {
+  background-color: #3a3a3a;
+  box-shadow: -2px 2px 0 var(--select-border);
+}
+
+[data-theme="dark"] button:active {
+  box-shadow: -1px 1px 0 var(--select-border);
+  transform: translate(-3px, 3px);
+}
+
+[data-theme="dark"] .sample-btn {
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border: 2px solid var(--select-border);
+  box-shadow: -4px 4px 0 var(--select-border);
+}
+
+[data-theme="dark"] .sample-btn:hover {
+  background-color: #3a3a3a;
+  box-shadow: -2px 2px 0 var(--select-border);
+}
+
+[data-theme="dark"] .sample-btn:active {
+  box-shadow: -1px 1px 0 var(--select-border);
+  transform: translate(-3px, 3px);
+}
+
+[data-theme="dark"] table {
+  border: 1px solid var(--container-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] th {
+  background-color: var(--header-bg) !important;
+  color: var(--header-text) !important;
+  border-bottom: 3px solid var(--header-border) !important;
+  border-right-color: var(--header-border);
+}
+
+[data-theme="dark"] td {
+  background-color: var(--td-bg);
+  color: var(--text-color);
+  border-bottom-color: var(--td-border);
+}
+
+[data-theme="dark"] tr:nth-child(odd) td {
+  background-color: var(--zebra-odd);
+}
+
+[data-theme="dark"] tr:nth-child(even) td {
+  background-color: var(--zebra-even);
+}
+
+[data-theme="dark"] tr:first-child td,
+[data-theme="dark"] tr:first-child th {
+  background-color: var(--th-bg) !important;
+}
+
+[data-theme="dark"] tr:hover td {
+  background-color: var(--hover-bg) !important;
+}
+
+[data-theme="dark"] #toast {
+  background-color: #28a745;
+  border: 2px solid #1f7a33;
+  box-shadow: 4px 4px 0 #1f7a33;
+  color: #ffffff;
+}
+
+[data-theme="dark"] #error-toast {
+  background-color: #dc3545;
+  border: 2px solid #a71d2a;
+  box-shadow: 4px 4px 0 #a71d2a;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .copy-btn {
+  border-color: var(--select-border);
+  color: var(--label-color);
+}
+
+[data-theme="dark"] .copy-btn:hover {
+  color: var(--select-focus);
+}
+
+[data-theme="dark"] .copy-btn:hover svg path {
+  fill: var(--select-focus);
+}
+
+/* General utility */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.sample-btn-container {
+  margin-left: auto;
+  padding-left: 10px;
+}
+
+/* Enhanced 3D Modal with Layered Borders */
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+}
+
+.image-modal.show {
+  display: flex;
+}
+
+.image-modal-content {
+  background: var(--container-bg);
+  border: 2px solid var(--container-border);
+  position: relative;
+  padding: 4px;
+  border-radius: 0;
+}
+
+/* Main 3D Shadow Effect */
+.image-modal-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid var(--container-border);
+  transform: translate(-8px, 8px);
+  z-index: -1;
+  background: var(--shadow-color);
+}
+
+/* Secondary shadow for extra depth */
+.image-modal-content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid var(--container-border);
+  transform: translate(-4px, 4px);
+  z-index: -1;
+  background: var(--shadow-color);
+  opacity: 0.7;
+}
+
+.image-modal img {
+  border: none;
+  box-shadow: none;
+  max-height: 80vh;
+  display: block;
+  background: var(--container-bg);
+}
+
+.close-modal {
+  position: absolute;
+  top: 0px;
+  right: 8px;
+  color: var(--text-color);
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: #f44336;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.image-modal.zoomed .magnifier {
+  display: block;
+}
+
+.magnifier {
+  position: fixed;
+  border: 2px solid #3b82f6;
+  border-radius: 50%;
+  cursor: none;
+  width: 150px;
+  height: 150px;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 10px rgba(59, 130, 246, 0.2);
+  background-repeat: no-repeat;
+  display: none;
+  pointer-events: none;
+}
+
+/* Added for toolbar buttons */
+.toolbar-btn {
+  background-color: #ffffff;
+  color: #475569;
+  font-family: monospace;
+  border: 2px solid #475569;
+  padding: 8px 14px;
+  border-radius: 0px;
+  box-shadow: -4px 4px 0 #15191f;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toolbar-btn:hover {
+  box-shadow: -2px 2px 0 #000000;
+  background-color: #f4f4f4;
+  transform: translateY(-1px);
+}
+
+.toolbar-btn:active {
+  box-shadow: -1px 1px 0 #000000;
+  transform: translate(-3px, 3px);
+}
+
+.toolbar-btn i {
+  font-size: 16px;
+}
+
+.toolbar {
+  display: none;
+  margin-left: 20px;
+}
+
+.toolbar.show {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.toolbar-separator {
+  height: 26px;
+  width: 2px;
+  background: #475569;
+  margin: 0 8px;
+  box-shadow: 1px 0 0 rgba(12, 12, 12, 0.5);
+}
+
+/* Make toolbar inline with convert button */
+.form-row {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 15px;
+}
+
+#copyTableBtn {
+  display: inline-block !important;
+}
+
+/* Sample button styles */
+.sample-btn {
+  padding: 10px 14px;
+  background-color: #ffffff;
+  color: #475569;
+  border: 2px solid #475569;
+  border-radius: 0px;
+  box-shadow: -4px 4px 0 #15191f;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sample-btn:hover {
+  box-shadow: -2px 2px 0 #000000;
+  background-color: #f4f4f4;
+  transform: translateY(-1px);
+}
+
+.sample-btn:active {
+  box-shadow: -1px 1px 0 #000000;
+  transform: translate(-3px, 3px);
+}
+
+/* Smooth transitions for theme change */
+body,
+.container,
+h2,
+label,
+select,
+input,
+textarea,
+th,
+td {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Context Menu Styles */
+.context-menu {
+  position: absolute;
+  background: var(--container-bg);
+  border: 2px solid var(--container-border);
+  border-radius: 0px;
+  box-shadow: -4px 4px 0px var(--shadow-color), -8px 8px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none;
+  min-width: 180px;
+  padding: 0;
+  overflow: hidden;
+  font-size: 14px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  transition: all 0.2s ease;
+}
+
+.context-menu.show {
+  transform: translate(-1px, 1px);
+}
+
+.menu-item {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-color);
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  pointer-events: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.menu-item:hover {
+  background-color: var(--hover-bg);
+  transform: translateY(-1px);
+}
+
+.menu-item:hover::before {
+  border-color: var(--select-focus);
+}
+
+/* Specific styles for delete action on hover */
+.menu-item[data-action^="delete"]:hover {
+  background-color: #fee2e2;
+  box-shadow: inset 1px 1px 2px rgba(185, 28, 28, 0.2), inset -1px -1px 2px rgba(255,255,255,0.05);
+}
+
+.menu-item[data-action^="delete"]:hover::before {
+  border-color: #ef4444;
+}
+
+.menu-divider {
+  height: 2px;
+  background: var(--container-border);
+  box-shadow: 0 0.5px 0 rgba(0,0,0,0.05), 0 -0.5px 0 rgba(255,255,255,0.05);
+  margin: 0;
+}
+
+.menu-item i {
+  color: var(--label-color);
+  width: 16px;
+  text-align: center;
+  transition: color 0.15s ease;
+}
+
+.menu-item:hover i {
+  color: var(--select-focus);
+}
+
+.menu-item[data-action^="delete"] i {
+  color: #b91c1c;
+}
+
+.menu-item[data-action^="delete"]:hover i {
+  color: #ef4444;
+}
+
+/* Dark Mode Adjustments */
+[data-theme="dark"] .context-menu {
+  background: var(--container-bg);
+  border-color: var(--container-border);
+  box-shadow: -4px 4px 0px rgba(0,0,0,0.6), -8px 8px 10px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .menu-item:hover {
+  background-color: #3a3a3a;
+}
+
+[data-theme="dark"] .menu-item:hover::before {
+  border-color: #4a90e2;
+}
+
+[data-theme="dark"] .menu-item[data-action^="delete"]:hover {
+  background-color: #a71d2a;
+}
+
+[data-theme="dark"] .menu-item[data-action^="delete"]:hover::before {
+  border-color: #dc3545;
+}
+
+[data-theme="dark"] .menu-divider {
+  background: #555;
+}
+
+[data-theme="dark"] .menu-item i {
+  color: #b0b0b0;
+}
+
+[data-theme="dark"] .menu-item:hover i {
+  color: #4a90e2;
+}
+
+[data-theme="dark"] .menu-item[data-action^="delete"] i {
+  color: #dc3545;
+}
+
+[data-theme="dark"] .menu-item[data-action^="delete"]:hover i {
+  color: #ef4444;
+}
+
+/* Styles for editable cells */
+.editable-cell input {
+  background: white;
+  color: black;
+  border: none;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  outline: none;
+}
+
+#output table {
+  overflow-anchor: none;
+}
+
+.selected-cell {
+  contain: content;
+}
+
+/* Undo/Redo buttons */
+.undo-redo-btn {
+  background-color: #ffffff;
+  color: #475569;
+  font-family: monospace;
+  border: 2px solid #475569;
+  padding: 10px;
+  border-radius: 0px;
+  box-shadow: -4px 4px 0 #15191f;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 12px 8px 12px 0;
+  width: 40px;
+}
+
+.undo-redo-btn:hover {
+  box-shadow: -2px 2px 0 #000000;
+  background-color: #f4f4f4;
+  transform: translateY(-1px);
+}
+
+.undo-redo-btn:active {
+  box-shadow: -1px 1px 0 #000000;
+  transform: translate(-3px, 3px);
+}
+
+.undo-redo-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+[data-theme="dark"] #convertBtn,
+[data-theme="dark"] .undo-redo-btn,
+[data-theme="dark"] .toolbar-btn {
+  background-color: #333;
+  color: #eee;
+  border: 2px solid #000000;
+  box-shadow: 0 4px 0 #000000;
+}
+
+[data-theme="dark"] .toolbar-btn:hover {
+  background: #4a4a4a;
+}
+
+/* Make toolbar inline with convert button */
+.form-row {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 15px;
+}
+
+#copyTableBtn {
+  display: inline-block !important;
+}
+
+/* Image Modal */
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  align-items: center;
+  justify-content: center;
+}
+
+.image-modal.show {
+  display: flex;
+}
+
+.image-modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 700px;
+  position: relative;
+}
+
+.image-modal img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+.close-modal {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Copyright bar */
+.copyright-bar {
+  position: fixed; /* Fixed to viewport bottom */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--header-bg); /* Use light mode variable */
+  color: var(--header-text); /* Use light mode variable */
+  padding: 12px 0;
+  border-top: 2px solid var(--header-border); /* Use light mode variable */
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+  font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  position: relative; /* Make it a positioning context for children */
+}
+
+[data-theme="dark"] .copyright-bar {
+  background: #1e293b; /* Use dark mode variable */
+  color: var(--header-text); /* Use dark mode variable */
+  border-top: 2px solid #0f172a; /* Use dark mode variable */
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.3);
+}
+
+.copyright-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.copyright-content .divider {
+  margin: 0 5px;
+  opacity: 0.5;
+  user-select: none;
+}
+
+/* Dark Mode Toggle (Circle and bottom left, inside copyright bar) */
+#darkModeToggle {
+  position: absolute; /* Position absolutely within copyright-bar */
+  bottom: 8px; /* Adjusted to be inside with padding */
+  left: 20px;
+  width: 30px; /* Reduced size */
+  height: 30px; /* Reduced size */
+  border-radius: 50%; /* Ensure it's a circle */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px; /* Adjusted icon size */
+  z-index: 101;
+  background-color: #ffffff;
+  color: #475569;
+  border: 2px solid #475569;
+  box-shadow: -4px 4px 0 #15191f; /* Added shadow */
+  transition: all 0.2s ease;
+}
+
+#darkModeToggle:hover {
+  box-shadow: -2px 2px 0 #000000;
+  background-color: #f4f4f4;
+  transform: translateY(-1px);
+}
+
+#darkModeToggle:active {
+  box-shadow: -1px 1px 0 #000000;
+  transform: translate(-3px, 3px);
+}
+
+[data-theme="dark"] #darkModeToggle {
+  background-color: #333;
+  color: #eee;
+  border: 2px solid #000;
+  box-shadow: -4px 4px 0 #000;
+}
+
+[data-theme="dark"] #darkModeToggle:hover {
+  background-color: #4a4a4a;
+  box-shadow: -2px 2px 0 #000;
+}
+
+[data-theme="dark"] #darkModeToggle:active {
+  box-shadow: -1px 1px 0 #000;
+  transform: translate(-3px, 3px);
+}
+
+/* Return to top button (bottom right, inside copyright bar) */
+#returnToTop {
+  position: absolute;
+  bottom: 8px;
+  right: 20px;
+  background-color: #ffffff;
+  color: #475569;
+  border: 2px solid #475569;
+  border-radius: 50%; /* Ensures it's a circle */
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, all 0.2s ease;
+  z-index: 999;
+  box-shadow: -4px 4px 0 #15191f;
+  overflow: hidden; /* Ensures content stays inside the circle */
+  padding: 0; /* Prevents padding from affecting the shape */
+}
+
+#returnToTop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#returnToTop:hover {
+  box-shadow: -2px 2px 0 #000000;
+  background-color: #f4f4f4;
+  transform: translateY(-1px);
+}
+
+#returnToTop:active {
+  box-shadow: -1px 1px 0 #000000;
+  transform: translate(-3px, 3px);
+}
+
+[data-theme="dark"] #returnToTop {
+  background-color: #333;
+  color: #eee;
+  border: 2px solid #000;
+  box-shadow: -4px 4px 0 #000;
+}
+
+[data-theme="dark"] #returnToTop:hover {
+  background-color: #4a4a4a;
+  box-shadow: -2px 2px 0 #000;
+}
+
+[data-theme="dark"] #returnToTop:active {
+  box-shadow: -1px 1px 0 #000;
+  transform: translate(-3px, 3px);
+}
+
+/* Output table spacing above copyright bar */
+#output {
+  margin-bottom: 70px; /* Adjust as needed to provide enough space */
+  margin-left: 50px; /* Adjust based on toolbar width */
+  min-width: calc(100% - 60px); /* Ensures table doesn't get cut off */
+  overflow-x: auto; /* Allows horizontal scrolling if table is too wide */
+  padding-bottom: 20px;
+}
+
+/* Disable pointer events during lock */
+body.locked * {
+  pointer-events: none !important;
+}
+
+/* Column resizing styles */
+th, td {
+  position: relative;
+}
+
+.resize-handle {
+  position: absolute;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background: transparent;
+  cursor: col-resize;
+  z-index: 1;
+}
+
+.resize-handle.right {
+  right: 0;
+}
+
+.resize-handle.left {
+  left: 0;
+}
+
+.resize-handle:hover,
+.resize-handle.active {
+  background: #3b82f6;
+  width: 8px; /* Slightly wider when active */
+}
+
+[data-theme="dark"] .resize-handle:hover,
+[data-theme="dark"] .resize-handle.active {
+  background: #60a5fa;
+}
+
+/* Makes inputs/textareas resizable with default OS handle */
+#paymentText, #inputText {
+  margin-left: 60px;
+  width: 90% !important;
+  height: auto; /* Allow height to be determined by content or min-height */
+  min-height: 300px; /* Optional: set a minimum height */
+  max-height: 80vh; /* Example: allow it to take up to 80% of the viewport height */
+  overflow-y: auto; /* Add a scrollbar if content exceeds max-height */
+}
+
+/* Force consistent header styling */
+.header-cell {
+  background-color: var(--header-bg) !important;
+  color: var(--header-text) !important;
+  border-bottom: 3px solid var(--header-border) !important;
+  font-weight: 700;
+  padding: 14px 16px;
+  position: relative;
+}
+
+/* Force consistent data cell styling */
+.data-cell {
+  background-color: var(--zebra-odd);
+  border: 1px solid var(--td-border);
+  padding: 10px 14px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--header-border);
+  border-radius: 4px;
+}
+
+/* ===== CELL MOVEMENT ANIMATION ===== */
+@keyframes cellMovement {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.moved-cell {
+  animation: cellMovement 0.3s ease-out;
+  z-index: 1;
+  position: relative;
+}
+
+[data-theme="dark"] .moved-cell {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+[data-theme="light"] .moved-cell {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+/* Remove animation after it plays */
+.moved-cell {
+  animation-fill-mode: forwards;
+}
+
+#undoBtn[disabled], 
+#redoBtn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#undoBtn.disabled,
+#redoBtn.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* This ensures the buttons can't be clicked when disabled */
+#undoBtn[disabled]:hover, 
+#redoBtn[disabled]:hover,
+#undoBtn.disabled:hover,
+#redoBtn.disabled:hover {
+  background-color: inherit;
+  transform: none;
+  box-shadow: none;
+}
+
+th::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--select-focus);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+tr:first-child:hover th::after {
+  opacity: 0.7;
+}
+
+footer.copyright-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+}

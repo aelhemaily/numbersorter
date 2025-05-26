@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Number Sorter</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div id="dragGhost" class="drag-ghost"></div>
+  <h2>Number Sorter</h2>
+
+  <div class="top-controls"></div>
+
+  <textarea id="inputText" placeholder="Paste your numbers here (one per line)..."></textarea>
+
+  <div class="form-row">
+    <button id="convertBtn">Convert</button>
+    <div id="toolbar" class="toolbar">
+      <button id="copyDebitColBtn" class="toolbar-btn" title="Copy Debit Column"><i class="fas fa-money-bill-wave"></i> Debit</button>
+      <button id="copyCreditColBtn" class="toolbar-btn" title="Copy Credit Column"><i class="fas fa-hand-holding-usd"></i> Credit</button>
+      <span class="toolbar-separator"></span>
+      <button id="copyBothColsBtn" class="toolbar-btn" title="Copy Both Columns"><i class="fa-solid fa-clipboard"></i> Both</button>
+    </div>
+  </div>
+
+  <div id="output"></div>
+  <div id="toast">Copied!</div>
+  <div id="error-toast">Error</div>
+
+  <div id="imageModal" class="image-modal">
+    <div class="image-modal-content">
+      <span class="close-modal">&times;</span>
+      <img id="sampleImage" src="" alt="Sample Statement">
+    </div>
+  </div>
+
+  <div id="tableContextMenu" class="context-menu">
+    <div class="menu-item" data-action="delete-row"><i class="fas fa-trash"></i> Delete Row</div>
+    <div class="menu-item" data-action="delete-col"><i class="fas fa-trash"></i> Delete Column</div>
+    <div class="menu-divider"></div>
+    <div class="menu-item" data-action="copy-cell"><i class="fas fa-copy"></i> Copy Cell</div>
+    <div class="menu-divider"></div>
+    <div class="menu-item" data-action="copy-row"><i class="fas fa-copy"></i> Copy Row</div>
+    <div class="menu-item" data-action="copy-col"><i class="fas fa-copy"></i> Copy Column</div>
+    <div class="menu-divider"></div>
+    <div class="menu-item" data-action="insert-col-left"><i class="fas fa-columns"></i> Insert Column Left</div>
+    <div class="menu-divider"></div>
+    <div class="menu-item" data-action="insert-row-below"><i class="fas fa-grip-lines"></i> Insert Row Below</div>
+  </div>
+
+  <footer class="copyright-bar">
+    <div class="copyright-content">
+      <span>&copy; 2025 Number Sorter</span>
+      <span class="divider">•</span>
+      <span>All rights reserved</span>
+      <span class="divider">•</span>
+      <span>Qzee</span>
+    </div>
+
+    <button id="darkModeToggle" class="toolbar-btn" title="Toggle Dark Mode">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <button id="returnToTop" title="Return to Top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  </footer>
+
+  <script src="transactionSorter.js"></script>
+</body>
+</html>
