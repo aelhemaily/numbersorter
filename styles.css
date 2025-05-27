@@ -1,3 +1,5 @@
+
+
 /* Base styles */
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
@@ -6,7 +8,6 @@ body {
   margin: 0;
   color: #334155;
   line-height: 1.5;
-  padding-bottom: 50px !important; /* Ensure content doesn't hide behind footer */
 }
 
 .container {
@@ -26,29 +27,34 @@ h2 {
   font-weight: 700;
   margin-bottom: 26px;
   letter-spacing: -0.01em;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display', serif; /* Font remains */
   
   /* Enhanced 3D Effect - Deeper Chiseled Inset */
-  color: var(--heading-color);
+  color: var(--heading-color); /* Main text color */
   text-shadow: 
+    /* Top-left highlights for the 'carved in' effect */
     -1px -1px 0px rgba(255,255,255,0.9), 
     -2px -2px 0px rgba(255,255,255,0.5), 
     -3px -3px 0px rgba(255,255,255,0.2), 
     
+    /* Bottom-right shadows for depth and the 'cut out' illusion */
     1px 1px 0px rgba(0,0,0,0.2), 
     2px 2px 0px rgba(0,0,0,0.15), 
     3px 3px 0px rgba(0,0,0,0.1),
-    4px 4px 0px rgba(0,0,0,0.05);
+    4px 4px 0px rgba(0,0,0,0.05); /* Further subtle depth */
+
   transition: all 0.3s ease;
 }
 
 [data-theme="dark"] h2 {
-  color: var(--heading-color);
+  color: var(--heading-color); /* Main text color in dark mode */
   text-shadow: 
+    /* Top-left highlights for the 'carved in' effect in dark mode */
     -1px -1px 0px rgba(0,0,0,0.9), 
     -2px -2px 0px rgba(0,0,0,0.5), 
     -3px -3px 0px rgba(0,0,0,0.2), 
     
+    /* Bottom-right shadows for depth in dark mode */
     1px 1px 0px rgba(255,255,255,0.2), 
     2px 2px 0px rgba(255,255,255,0.15), 
     3px 3px 0px rgba(255,255,255,0.1),
@@ -71,6 +77,7 @@ select, input[type="text"] {
   vertical-align: middle;
 }
 
+/* Find the existing select styles and replace with this: */
 select {
   padding: 10px 30px 10px 12px;
   font-size: 14px;
@@ -104,36 +111,21 @@ select:hover {
 }
 
 input[type="text"] {
-  resize: both;
-  overflow: auto;
-  min-width: 120px;
-  min-height: 40px;
-  background-color: var(--container-bg);
-  border: none; /* No explicit border */
-  border-radius: 0px; /* Kept sharp for the grooved look */
-  color: var(--text-color);
-  padding: 8px 12px;
-  font-family: 'Inter', sans-serif;
+  padding: 10px 14px;
   font-size: 14px;
-  
-  /* Deep inset shadow for a grooved look with more pronounced bluish tint */
-  box-shadow: inset 0 0 10px rgba(50, 80, 120, 0.3), /* Strong inner shadow, more saturated dark blue-gray */
-              inset 0 0 0 1px var(--container-border); /* Subtle inner border, uses theme color */
+  margin: 0 10px 0 0;
+  width: 180px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   transition: all 0.2s ease;
 }
 
 input[type="text"]:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
   outline: none;
-  /* Adjust shadow to slightly lighten the "groove" on focus and highlight with theme blue */
-  box-shadow: inset 0 0 8px rgba(50, 80, 120, 0.2), /* Slightly lighter dark blue-gray */
-              inset 0 0 0 1px var(--select-focus); /* Highlight with theme's select blue */
 }
-
-input[type="text"]:hover {
-  box-shadow: inset 0 0 10px rgba(50, 80, 120, 0.3), /* Strong inner shadow, more saturated dark blue-gray */
-              inset 0 0 0 1px var(--container-border); /* Subtle inner border, uses theme color */
-}
-
 
 textarea {
   width: 100%;
@@ -141,32 +133,18 @@ textarea {
   font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
   font-size: 14px;
   padding: 14px;
-  resize: both;
-  overflow: auto;
-  min-width: 120px;
-  min-height: 40px;
-  background-color: var(--container-bg);
-  border: none; /* No explicit border */
-  border-radius: 0px; /* Kept sharp for the grooved look */
-  color: var(--text-color);
-  
-  /* Deep inset shadow for a grooved look with more pronounced bluish tint */
-  box-shadow: inset 0 0 10px rgba(50, 80, 120, 0.3), /* Strong inner shadow, more saturated dark blue-gray */
-              inset 0 0 0 1px var(--container-border); /* Subtle inner border, uses theme color */
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  resize: both; /* <--- CHANGED FROM 'vertical' TO 'both' */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   transition: all 0.2s ease;
   margin-top: 15px;
 }
 
 textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
   outline: none;
-  /* Adjust shadow to slightly lighten the "groove" on focus and highlight with theme blue */
-  box-shadow: inset 0 0 8px rgba(50, 80, 120, 0.2), /* Slightly lighter dark blue-gray */
-              inset 0 0 0 1px var(--select-focus); /* Highlight with theme's select blue */
-}
-
-textarea:hover {
-  box-shadow: inset 0 0 10px rgba(50, 80, 120, 0.3), /* Strong inner shadow, more saturated dark blue-gray */
-              inset 0 0 0 1px var(--container-border); /* Subtle inner border, uses theme color */
 }
 
 /* Buttons - consistent styling */
@@ -186,6 +164,7 @@ button {
   margin: 0 8px 0 0;
 }
 
+/* Convert button can be displayed inline with the select */
 #convertBtn {
   background-color: #ffffff;
   color: #475569;
@@ -197,7 +176,7 @@ button {
   cursor: pointer;
   transition: all 0.2s ease;
   vertical-align: middle;
-  margin-left: 0px;
+  margin-left: 60px;
   margin-top: 10px;
 }
 
@@ -248,6 +227,7 @@ table {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   border: 1px solid #212122;
+  
 }
 
 th, td {
@@ -258,21 +238,30 @@ th, td {
 }
 
 th {
+  /* Colors (now using CSS variables) */
   background-color: var(--header-bg) !important;
   color: var(--header-text) !important;
   border-bottom: 3px solid var(--header-border) !important;
-  font-weight: 700;
+  
+  /* Font styling */
+  font-weight: 700; /* Bolder than before */
   font-size: 14px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  padding: 14px 16px;
+  letter-spacing: 0.5px; /* Slightly more spaced */
+  text-transform: uppercase; /* Optional: makes headers ALL CAPS */
+  
+  /* Spacing & borders */
+  padding: 14px 16px; /* Slightly more padding than before */
   position: relative;
   border-right: 1px solid var(--header-border);
+  
+  /* Shadow effect */
   box-shadow: 0 2px 3px rgba(0,0,0,0.05);
+  
+  /* Smooth transitions */
   transition: all 0.2s ease;
-  min-width: 50px; /* Prevent columns from getting too narrow */
 }
 
+/* Dark mode adjustments */
 [data-theme="dark"] th {
   box-shadow: 0 2px 3px rgba(0,0,0,0.2);
   border-right-color: #475569;
@@ -326,17 +315,17 @@ tr:hover td {
 /* Copy button */
 .copy-btn {
   background: none;
-  border: 1px solid #475569;
+  border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
-  position: absolute;
-  left: 4px;
-  top: 4px;
-  width: 24px;
-  height: 24px;
-  display: flex;
+  margin-right: 8px;
+  padding: 0;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  color: #64748b;
+  transition: color 0.2s ease;
+  height: 24px;
+  width: 24px;
 }
 
 .copy-btn:hover {
@@ -348,8 +337,8 @@ tr:hover td {
   position: fixed;
   bottom: 60px;
   right: 10px;
-  background-color: #1eac52;
-  color: #0f172a;
+  background-color: #1eac52; /* lime-500 */
+  color: #0f172a;            /* slate-900 for contrast */
   font-family: monospace;
   padding: 10px 18px;
   border: 2px solid #0f172a;
@@ -371,13 +360,13 @@ tr:hover td {
 
 #error-toast {
   position: fixed;
-  bottom: 80px; /* Adjusted to be 20px higher than before */
+  bottom: 50px;
   right: 30px;
-  background-color: #ca5454;
-  color: #ffffff;
+  background-color: #ca5454; /* Red background */
+  color: #ffffff;            /* White text for contrast */
   font-family: monospace;
   padding: 10px 18px;
-  border: 2px solid #352d2d;
+  border: 2px solid #352d2d; /* Darker red border */
   border-radius: 0;
   opacity: 0;
   pointer-events: none;
@@ -398,6 +387,7 @@ tr:hover td {
   opacity: 0;
   transform: translateY(10px);
 }
+
 
 /* SVG icon in copy button */
 .copy-btn svg {
@@ -432,37 +422,134 @@ tr:hover td {
   margin-right: 10px;
 }
 
-/* Add this section to your styles.css */
+/* Column widths - kept the same 
+th:nth-child(1), td:nth-child(1) {
+  width: 1%;
+}
+
+th:nth-child(2), td:nth-child(2) {
+  width: 5%;
+}
+
+th:nth-child(3), td:nth-child(3) {
+  width: 7%;
+}
+
+th:nth-child(4), td:nth-child(4) {
+  width: 5%;
+}
+
+th:nth-child(5), td:nth-child(5) {
+  width: 5%;
+}
+
+th:nth-child(6), td:nth-child(6) {
+  width: 5%;
+}*/
+
+.copy-btn {
+  background: none;
+  border: 1px solid #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure headers have relative positioning */
+th {
+  position: relative;
+  padding-left: 30px; /* Make room for the button */
+}
+
+.copy-btn:hover {
+  box-shadow: -1px 2px 0 #000000;
+  transform: translateY(-1px);
+}
+
+.copy-btn:active {
+  box-shadow: -1px 2px 0 #000000;
+  transform: translate(-2px, 2px);
+}
+.line-buttons {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+.line-buttons button {
+  background-color: #2196F3;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.line-buttons button:hover {
+  background-color: #1976D2;
+}
+
+.line-buttons button.greyed-out {
+  background-color: #B0BEC5;
+  cursor: not-allowed;
+}
+
+.line-buttons.merged {
+  background-color: #e8f5e9;
+}
+
+#rbcPreprocessor {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+  select {
+   
+    border-radius: 6px;
+    border: 1px solid #010101;
+    background-color: #d7dee8;
+  }
+
+  /* ==================== */
+/* Dark Mode Variables  */
+/* ==================== */
 :root {
   --bg-color: #f8fafc;
   --text-color: #334155;
   --container-bg: #fff;
   --container-border: #e2e8f0;
   --shadow-color: rgba(0, 0, 0, 0.08);
-  --heading-color: #1a202c;
+  --heading-color: #1e293b;
   --label-color: #475569;
-  --select-border: #475569;
+  --select-border: #cbd5e1;
   --select-focus: #3b82f6;
-  --th-bg: #e2e8f0;
+  --th-bg: #f1f5f9;
   --th-border: #cbd5e1;
   --td-bg: #ffffff;
   --td-border: #e2e8f0;
-  --hover-bg: #f0f4f8;
+  --hover-bg: #e6f0ff; /* Changed to a light blue */
   --input-bg: #ffffff;
-  --zebra-odd: #f8fafc;
-  --zebra-even: #ffffff;
-  
-  /* Header colors for light mode */
-  --header-bg: #e2e8f0; /* Light background for headers */
-  --header-text: #475569; /* Dark text for headers */
-  --header-border: #cbd5e1; /* Light border for headers */
-
-  --copyright-bg-light: #e2e8f0; /* Light mode copyright background */
-  --copyright-text-light: #475569; /* Light mode copyright text */
-  --copyright-border-light: #cbd5e1; /* Light mode copyright border */
+--zebra-odd: #ffffff; /* White stays same */
+--zebra-even: #f5f5f5; /* Slightly darker gray */
+--header-bg: #e2e8f0; /* Light slate-200 */
+  --header-text: #1e293b; /* Dark slate-800 */
+  --header-border: #94a3b8; /* Slate-400 */
 }
 
-/* Dark mode variables */
 [data-theme="dark"] {
   --bg-color: #1a1a1a;
   --text-color: #e0e0e0;
@@ -477,15 +564,13 @@ tr:hover td {
   --th-border: #444;
   --td-bg: #2d2d2d;
   --td-border: #444;
-  --hover-bg: #3a4a6b;
+ --hover-bg: #3a4a6b; /* Darker blue for dark mode */
   --input-bg: #3a3a3a;
-  --zebra-odd: #2d2d2d;
-  --zebra-even: #3a3a3a;
-
-  /* Header colors for dark mode */
-  --header-bg: #334155; /* Dark background for headers */
-  --header-text: #f8fafc; /* Light text for headers */
-  --header-border: #04042c; /* Dark border for headers */
+--zebra-odd: #2d2d2d; /* Dark gray stays same */
+--zebra-even: #3a3a3a; /* Slightly lighter gray */
+--header-bg: #334155; /* Dark slate-700 */
+  --header-text: #f8fafc; /* Light slate-50 */
+  --header-border: #04042c; /* Slate-600 */
 }
 
 /* Dark Mode Element Styles */
@@ -502,14 +587,6 @@ tr:hover td {
 
 [data-theme="dark"] h2 {
   color: var(--heading-color);
-  text-shadow:
-    -1px -1px 0px rgba(0,0,0,0.9),
-    -2px -2px 0px rgba(0,0,0,0.5),
-    -3px -3px 0px rgba(0,0,0,0.2),
-    1px 1px 0px rgba(255,255,255,0.2),
-    2px 2px 0px rgba(255,255,255,0.15),
-    3px 3px 0px rgba(255,255,255,0.1),
-    4px 4px 0px rgba(255,255,255,0.05);
 }
 
 [data-theme="dark"] label {
@@ -517,77 +594,23 @@ tr:hover td {
 }
 
 [data-theme="dark"] select {
+  border-color: var(--select-border);
   background-color: var(--input-bg);
   color: var(--text-color);
-  border-color: var(--select-border);
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b0b0b0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-}
-
-[data-theme="dark"] select:focus {
-  border-color: var(--select-border); /* Consistent with light mode */
-  box-shadow: -2px 2px 0 #000000; /* Consistent with light mode */
 }
 
 [data-theme="dark"] input[type="text"],
 [data-theme="dark"] textarea {
-  background-color: var(--container-bg);
-  color: var(--text-color);
-  /* Dark mode grooved look with more pronounced light bluish tint */
-  box-shadow: inset 0 0 10px rgba(150, 190, 230, 0.2), /* Strong inner shadow, more saturated light blue-gray */
-              inset 0 0 0 1px var(--container-border); /* Uses theme border */
-}
-
-[data-theme="dark"] input[type="text"]:focus,
-[data-theme="dark"] textarea:focus {
-  /* Adjust dark mode focus shadows */
-  box-shadow: inset 0 0 8px rgba(150, 190, 230, 0.12), /* Slightly lighter light blue-gray */
-              inset 0 0 0 1px var(--select-focus); /* Highlight with theme's select blue */
-}
-
-[data-theme="dark"] button {
   background-color: var(--input-bg);
   color: var(--text-color);
-  border: 2px solid var(--select-border);
-  box-shadow: -4px 4px 0 var(--select-border);
-}
-
-[data-theme="dark"] button:hover {
-  background-color: #3a3a3a;
-  box-shadow: -2px 2px 0 var(--select-border);
-}
-
-[data-theme="dark"] button:active {
-  box-shadow: -1px 1px 0 var(--select-border);
-  transform: translate(-3px, 3px);
-}
-
-[data-theme="dark"] .sample-btn {
-  background-color: var(--input-bg);
-  color: var(--text-color);
-  border: 2px solid var(--select-border);
-  box-shadow: -4px 4px 0 var(--select-border);
-}
-
-[data-theme="dark"] .sample-btn:hover {
-  background-color: #3a3a3a;
-  box-shadow: -2px 2px 0 var(--select-border);
-}
-
-[data-theme="dark"] .sample-btn:active {
-  box-shadow: -1px 1px 0 var(--select-border);
-  transform: translate(-3px, 3px);
-}
-
-[data-theme="dark"] table {
-  border: 1px solid var(--container-border);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-color: var(--select-border);
 }
 
 [data-theme="dark"] th {
-  background-color: var(--header-bg) !important;
-  color: var(--header-text) !important;
-  border-bottom: 3px solid var(--header-border) !important;
-  border-right-color: var(--header-border);
+  background-color: var(--th-bg);
+  color: var(--label-color);
+  border-bottom-color: var(--th-border);
 }
 
 [data-theme="dark"] td {
@@ -596,88 +619,646 @@ tr:hover td {
   border-bottom-color: var(--td-border);
 }
 
-[data-theme="dark"] tr:nth-child(odd) td {
-  background-color: var(--zebra-odd);
-}
-
-[data-theme="dark"] tr:nth-child(even) td {
-  background-color: var(--zebra-even);
-}
-
-[data-theme="dark"] tr:first-child td,
-[data-theme="dark"] tr:first-child th {
-  background-color: var(--th-bg) !important;
-}
-
 [data-theme="dark"] tr:hover td {
-  background-color: var(--hover-bg) !important;
+  background-color: var(--hover-bg);
 }
 
-[data-theme="dark"] #toast {
-  background-color: #28a745;
-  border: 2px solid #1f7a33;
-  box-shadow: 4px 4px 0 #1f7a33;
-  color: #ffffff;
+/* Dark Mode Toggle Button */
+#darkModeToggle {
+  position: fixed;
+  margin-left: 10px;
+  bottom: 10px; /* Distance from bottom of screen */
+  left: 0px;
+  background-color: var(--container-bg);
+  color: var(--text-color);
+  border: 1px solid var(--select-border);
+  border-color: #000000;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  
+    border: 2px solid #475569;
+  box-shadow: -2px 2px 0 #15191f;
 }
 
-[data-theme="dark"] #error-toast {
-  background-color: #dc3545;
-  border: 2px solid #a71d2a;
-  box-shadow: 4px 4px 0 #a71d2a;
-  color: #ffffff;
+
+#darkModeToggle:hover {
+  transform: scale(1.1);
 }
 
-[data-theme="dark"] .copy-btn {
-  border-color: var(--select-border);
+/* Return to Top Button */
+#returnToTop {
+  position: fixed;
+  right: 0px; /* Small gap from right edge */
+  background-color: var(--container-bg);
+  color: var(--text-color);
+  border: 1px solid var(--select-border);
+  border-color: #000000;
+  border-radius: 50%;
+  width: 30px; /* Smaller but proportional */
+  height: 30px; /* Must match width */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px var(--shadow-color); /* Smaller shadow */
+  z-index: 1000;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+  padding: 0; /* Ensure no extra spacing */
+  box-shadow: -2px 2px 0 #15191f;
+}
+
+#returnToTop i {
+  font-size: 16px; /* Smaller icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#returnToTop:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+#returnToTop.show {
+  display: flex;
+}
+
+/* Smooth transitions for theme change */
+body, .container, h2, label, select, input, textarea, th, td {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Context Menu Styles */
+
+.context-menu {
+  position: absolute;
+  background: var(--container-bg); /* Main menu background */
+  border: 2px solid var(--container-border);
+  border-radius: 0px;
+  box-shadow: -4px 4px 0px var(--shadow-color),
+              -8px 8px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none;
+  min-width: 180px;
+  padding: 0; /* crucial for full-width hover of menu-items */
+  overflow: hidden; /* Ensures inner box-shadows are contained */
+  font-size: 14px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  transition: all 0.2s ease;
+}
+
+.context-menu.show {
+  transform: translate(-1px, 1px);
+}
+
+.menu-item {
+  width: 100%; /* crucial for full-width hover */
+  box-sizing: border-box; /* crucial for full-width hover */
+  padding: 8px 16px; /* Apply padding here for each item */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-color);
+  transition: all 0.15s ease; /* Transition for transform, background-color, box-shadow */
+  text-shadow: 0.5px 0.5px 0.5px rgba(255,255,255,0.1), 
+               -0.5px -0.5px 0.5px rgba(0,0,0,0.05);
+  position: relative; /* Needed for pseudo-element outline */
+  z-index: 0; /* Ensures pseudo-element is behind text and the actual menu-item background */
+}
+
+/* === Zebra Coloring for Menu Items === */
+/* Applied directly to the menu item */
+.menu-item:nth-child(odd) {
+  background-color: var(--context-menu-zebra-odd);
+}
+
+.menu-item:nth-child(even) {
+  background-color: var(--context-menu-zebra-even);
+}
+
+/* Pseudo-element for full-width outline on hover */
+.menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent; /* Default transparent border */
+  box-sizing: border-box;
+  pointer-events: none; /* Allows clicks to pass through */
+  transition: border-color 0.15s ease; /* ONLY transition border-color here */
+  z-index: -1; /* Place behind the actual menu-item content and its background */
+}
+
+/* === Hover Effect: Outline (via ::before) + Background Fill + Press-in (on main element) === */
+.menu-item:hover {
+  background-color: var(--hover-bg); /* This will override the zebra background */
+  
+  /* Press-in effect */
+  transform: translate(1px, 1px); /* Moves the whole item down and right */
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.15), /* Stronger inner shadow for depth */
+              inset -1px -1px 2px rgba(255,255,255,0.05); /* Subtle inner highlight */
+}
+
+.menu-item:hover::before {
+  border-color: var(--select-focus); /* Outline color on hover */
+  /* DO NOT put background-color here, it will block the .menu-item's background-color */
+}
+
+/* Specific styles for delete action on hover */
+.menu-item[data-action^="delete"]:hover {
+  background-color: #fee2e2; /* Specific background for delete on hover */
+  box-shadow: inset 1px 1px 2px rgba(185, 28, 28, 0.2), 
+              inset -1px -1px 2px rgba(255,255,255,0.05);
+}
+
+.menu-item[data-action^="delete"]:hover::before {
+  border-color: #ef4444; /* Specific border color for delete on hover */
+}
+
+
+.menu-divider {
+  height: 2px;
+  background: var(--container-border);
+  box-shadow: 0 0.5px 0 rgba(0,0,0,0.05), 0 -0.5px 0 rgba(255,255,255,0.05);
+  margin: 0; /* Ensures divider is flush with menu items */
+}
+
+.menu-item i {
   color: var(--label-color);
+  width: 16px;
+  text-align: center;
+  transition: color 0.15s ease;
 }
 
-[data-theme="dark"] .copy-btn:hover {
+.menu-item:hover i {
   color: var(--select-focus);
 }
 
-[data-theme="dark"] .copy-btn:hover svg path {
-  fill: var(--select-focus);
+.menu-item[data-action^="delete"] i {
+  color: #b91c1c;
 }
 
-/* General utility */
-.flex-center {
+.menu-item[data-action^="delete"]:hover i {
+  color: #ef4444;
+}
+
+/* Dark Mode Adjustments */
+[data-theme="dark"] .context-menu {
+  background: var(--container-bg);
+  border-color: var(--container-border);
+  box-shadow: -4px 4px 0px var(--shadow-color),
+              -8px 8px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Dark Mode Zebra Coloring */
+[data-theme="dark"] .menu-item:nth-child(odd) {
+  background-color: var(--context-menu-zebra-odd);
+}
+
+[data-theme="dark"] .menu-item:nth-child(even) {
+  background-color: var(--context-menu-zebra-even);
+}
+
+[data-theme="dark"] .menu-item {
+  color: var(--text-color);
+  text-shadow: 0.5px 0.5px 0.5px rgba(0,0,0,0.1), 
+               -0.5px -0.5px 0.5px rgba(255,255,255,0.05);
+}
+
+[data-theme="dark"] .menu-item:hover::before {
+  border-color: var(--select-focus);
+}
+
+[data-theme="dark"] .menu-item:hover {
+  background-color: var(--hover-bg); /* Dark mode hover background */
+  box-shadow: inset 1px 1px 2px rgba(255,255,255,0.15), 
+              inset -1px -1px 2px rgba(0,0,0,0.05);
+}
+
+[data-theme="dark"] .menu-item[data-action^="delete"]:hover {
+  background-color: #fee2e2;
+  box-shadow: inset 1px 1px 2px rgba(255,255,255,0.15), 
+              inset -1px -1px 2px rgba(0,0,0,0.05);
+}
+
+[data-theme="dark"] .menu-divider {
+  background: var(--container-border);
+  box-shadow: 0 0.5px 0 rgba(255,255,255,0.05), 0 -0.5px 0 rgba(0,0,0,0.05);
+}
+
+/* Drag and Drop Styles */
+td[draggable="true"] {
+  cursor: grab;
+  transition: all 0.2s ease;
+}
+
+td[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+
+
+.drop-target {
+  outline: 2px dashed #3b82f6;
+  background-color: #eff6ff !important;
+}
+
+
+
+.drag-ghost {
+  position: absolute;
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 8px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.8;
+  transform: rotate(3deg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: none;
+}
+
+
+
+[data-theme="dark"] .drop-target {
+  outline-color: #60a5fa;
+  background-color: #1e3a8a !important;
+}
+
+
+
+[data-theme="dark"] .drag-ghost {
+  background: #2d2d2d;
+  border-color: #444;
+}
+
+/* Excel-like cell selection styles */
+td.selected-cell, th.selected-cell {
+  position: relative;
+  border: 2px solid #3b82f6 !important;
+  outline: none;
+  background-color: #f0f7ff !important;
+}
+
+[data-theme="dark"] td.selected-cell, 
+[data-theme="dark"] th.selected-cell {
+  border-color: #60a5fa !important;
+  background-color: #1e3a8a !important;
+}
+
+td.selected-cell input {
+  background: white;
+  color: black;
+  border: none;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  outline: none;
+}
+
+/* Add to your styles.css */
+#output table {
+    overflow-anchor: none; /* Prevents scroll anchoring */
+}
+
+.selected-cell {
+    contain: content; /* Improves rendering performance */
+}
+
+/* Undo/Redo buttons */
+.undo-redo-btn {
+  background-color: #ffffff;
+  color: #475569;
+  font-family: monospace;
+  border: 2px solid #475569;
+  padding: 10px;
+  border-radius: 0px;
+  box-shadow: -4px 4px 0 #15191f;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 12px 8px 12px 0;
+  width: 40px;
+}
+
+.undo-redo-btn:hover {
+  box-shadow: -2px 2px 0 #000000;
+  background-color: #f4f4f4;
+  transform: translateY(-1px);
+}
+
+.undo-redo-btn:active {
+  box-shadow: -1px 1px 0 #000000;
+  transform: translate(-3px, 3px);
+}
+
+.undo-redo-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+#output table {
+  transition: none !important;
+}
+
+[data-theme="dark"] #convertBtn,
+[data-theme="dark"] .undo-redo-btn,
+[data-theme="dark"] .copy-all-btn {
+  background-color: #1a1a1a; /* Pure black */
+  color: #ffffff; /* White text */
+  border: 2px solid #3a3a3a; /* Slightly lighter border */
+  box-shadow: -4px 4px 0 #000000;
+}
+
+[data-theme="dark"] #convertBtn:hover,
+[data-theme="dark"] .undo-redo-btn:hover,
+[data-theme="dark"] .copy-all-btn:hover {
+  background-color: #2d2d2d; /* Slightly lighter on hover */
+}
+
+
+
+
+th::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--select-focus);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+tr:first-child:hover th::after {
+  opacity: 0.7;
+}
+/* Toolbar styles */
+.toolbar {
+  
+  position: fixed;
+  bottom: 110px;
+  left: 0;
   display: flex;
+  flex-direction: column; /* vertical layout */
+  padding: 8px;
+  background: #d7dee8;
+  z-index: 100;
+  border-radius: 0px;
+  border: 2px solid #475569;
+  box-shadow: -4px 4px 0 #15191f;
+  font-family: monospace;
+  margin-left:10px;
+}
+
+
+.toolbar-btn {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  background: #eaeef3;
+  border: 2px solid #475569;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin: 0 3px;
+  font-weight: bold;
+  box-shadow: 0 4px 0 #475569;
+}
+
+.toolbar-btn:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+.toolbar-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #475569;
+}
+
+.toolbar.show {
+  display: inline-flex;
+  gap: 4px;
   align-items: center;
 }
 
-.top-controls {
+/* Ensure toolbar is right-aligned in its container */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+
+[data-theme="dark"] .toolbar {
+  background: #2d2d2d;
+  border: 2px solid #3a3a3a;
+  box-shadow: -4px 4px 0 #000000; /* Updated dark mode shadow */
+}
+
+[data-theme="dark"] .toolbar-btn {
+  background-color: #3a3a3a;
+  color: #ffffff;
+  border: 2px solid #000000;
+  box-shadow: 0 4px 0 #000000;
+}
+
+[data-theme="dark"] .toolbar-btn:hover {
+  background: #4a4a4a;
+}
+
+.toolbar.show {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.toolbar-separator {
+  height: 26px;
+  width: 2px;
+  background: #475569;
+  margin: 0 8px;
+  box-shadow: 1px 0 0 rgba(12, 12, 12, 0.5);
+}
+
+
+
+
+.toolbar-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Make toolbar inline with convert button */
+.form-row {
   display: flex;
   align-items: flex-end;
-  gap: 15px;
+  margin-bottom: 15px;
+}
+
+#copyTableBtn {
+  display: inline-block !important;
+}
+
+/* Sample button styles */
+.sample-btn-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Pushes to the right */
+  padding-left: 10px;
+}
+
+.sample-btn {
+  padding: 10px 14px;
+  background-color: #ffffff;
+  color: #475569;
+  border: 2px solid #475569;
+  border-radius: 0px;
+  box-shadow: -4px 4px 0 #15191f;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px; /* Match other form controls */
+}
+
+.sample-btn:hover {
+  box-shadow: -2px 2px 0 #000000;
+  background-color: #f4f4f4;
+  transform: translateY(-1px);
+}
+
+.sample-btn:active {
+  box-shadow: -1px 1px 0 #000000;
+  transform: translate(-3px, 3px);
+}
+
+.sample-btn .sample-text {
+  display: none;
+}
+
+.sample-btn:hover .sample-text {
+  display: inline;
+}
+
+/* Image modal styles (unchanged from previous) */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.image-modal.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.image-modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.image-modal img {
+  max-width: 100%;
+  max-height: 90vh;
+  border: 3px solid #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.close-modal {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  color:#000000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.close-modal:hover {
+  color: #030247;
+  box-shadow: 0 0 8px 2px #1d1a1a;
+  transform: rotate(90deg);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, color 0.4s ease;
+}
+
+
+
+[data-theme="dark"] .sample-btn {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 2px solid #3a3a3a;
+  box-shadow: -4px 4px 0 #000000;
+}
+
+[data-theme="dark"] .sample-btn:hover {
+  background-color: #2d2d2d;
+}
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* space between controls */
   margin-bottom: 15px;
 }
 
 .sample-btn-container {
-  margin-left: auto;
-  padding-left: 10px;
+  margin-left: auto; /* push sample button all the way right */
 }
 
-/* Enhanced 3D Modal with Layered Borders */
-.image-modal {
-  display: none;
-  position: fixed;
-  z-index: 1001;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6);
-  align-items: center;
-  justify-content: center;
-}
-
-.image-modal.show {
-  display: flex;
-}
-
+/* Inline CSS for demonstration - move to styles.css if you prefer */
+    .top-controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    /* Align sample button container to the right */
+    .sample-btn-container {
+      margin-left: auto; /* pushes this container to the far right */
+    }
+    
+    /* Enhanced 3D Modal with Layered Borders */
 .image-modal-content {
   background: var(--container-bg);
   border: 2px solid var(--container-border);
@@ -721,645 +1302,98 @@ tr:hover td {
   max-height: 80vh;
   display: block;
   background: var(--container-bg);
+  border: 1px solid var(--td-border);
 }
 
 .close-modal {
-  position: absolute;
-  top: 0px;
-  right: 8px;
+  background: var(--th-bg);
   color: var(--text-color);
-  font-size: 35px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.close-modal:hover,
-.close-modal:focus {
-  color: #f44336;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.image-modal.zoomed .magnifier {
-  display: block;
-}
-
-.magnifier {
-  position: fixed;
-  border: 2px solid #3b82f6;
-  border-radius: 50%;
-  cursor: none;
-  width: 150px;
-  height: 150px;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 0 10px rgba(59, 130, 246, 0.2);
-  background-repeat: no-repeat;
-  display: none;
-  pointer-events: none;
-}
-
-/* Added for toolbar buttons */
-.toolbar-btn {
-  background-color: #ffffff;
-  color: #475569;
-  font-family: monospace;
-  border: 2px solid #475569;
-  padding: 8px 14px;
-  border-radius: 0px;
-  box-shadow: -4px 4px 0 #15191f;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.toolbar-btn:hover {
-  box-shadow: -2px 2px 0 #000000;
-  background-color: #f4f4f4;
-  transform: translateY(-1px);
-}
-
-.toolbar-btn:active {
-  box-shadow: -1px 1px 0 #000000;
-  transform: translate(-3px, 3px);
-}
-
-.toolbar-btn i {
-  font-size: 16px;
-}
-
-.toolbar {
-  display: none;
-  margin-left: 20px;
-}
-
-.toolbar.show {
-  display: inline-flex;
-  gap: 6px;
-  align-items: center;
-}
-
-.toolbar-separator {
-  height: 26px;
-  width: 2px;
-  background: #475569;
-  margin: 0 8px;
-  box-shadow: 1px 0 0 rgba(12, 12, 12, 0.5);
-}
-
-/* Make toolbar inline with convert button */
-.form-row {
-  display: flex;
-  align-items: flex-end;
-  margin-bottom: 15px;
-}
-
-#copyTableBtn {
-  display: inline-block !important;
-}
-
-/* Sample button styles */
-.sample-btn {
-  padding: 10px 14px;
-  background-color: #ffffff;
-  color: #475569;
-  border: 2px solid #475569;
-  border-radius: 0px;
-  box-shadow: -4px 4px 0 #15191f;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: monospace;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.sample-btn:hover {
-  box-shadow: -2px 2px 0 #000000;
-  background-color: #f4f4f4;
-  transform: translateY(-1px);
-}
-
-.sample-btn:active {
-  box-shadow: -1px 1px 0 #000000;
-  transform: translate(-3px, 3px);
-}
-
-/* Smooth transitions for theme change */
-body,
-.container,
-h2,
-label,
-select,
-input,
-textarea,
-th,
-td {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Context Menu Styles */
-.context-menu {
-  position: absolute;
-  background: var(--container-bg);
   border: 2px solid var(--container-border);
-  border-radius: 0px;
-  box-shadow: -4px 4px 0px var(--shadow-color), -8px 8px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  display: none;
-  min-width: 180px;
-  padding: 0;
-  overflow: hidden;
-  font-size: 14px;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-  transition: all 0.2s ease;
-}
-
-.context-menu.show {
-  transform: translate(-1px, 1px);
-}
-
-.menu-item {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 8px 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text-color);
+  box-shadow: -4px 4px 0 var(--shadow-color);
+  font-size: 18px;
+  font-weight: bold;
   transition: all 0.15s ease;
-  position: relative;
 }
 
-.menu-item::before {
-  content: '';
+.close-modal:hover {
+  transform: translate(-3px, 3px);
+  box-shadow: -1px 1px 0 var(--shadow-color);
+  background: var(--hover-bg);
+}
+
+/* ===== SUPERCHARGED LIGHT MODE ===== */
+[data-theme="light"] .image-modal-content {
+  border: 3px solid #334155; /* Darker border */
+  box-shadow: -8px 8px 0 #cbd5e1, /* Base shadow */
+              -12px 12px 0 #e2e8f0; /* Secondary shadow */
+}
+
+[data-theme="light"] .image-modal-content::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  border: 1px solid transparent;
-  border-radius: 0px;
-  pointer-events: none;
-  box-sizing: border-box;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  right: 0;
+  bottom: 0;
+  border: 3px solid #64748b; /* Mid-tone border */
+  transform: translate(-6px, 6px);
+  z-index: -1;
+  background: #f1f5f9;
 }
 
-.menu-item:hover {
-  background-color: var(--hover-bg);
-  transform: translateY(-1px);
+[data-theme="light"] .image-modal-content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid #94a3b8; /* Lighter border */
+  transform: translate(-12px, 12px);
+  z-index: -2;
+  background: #f8fafc;
 }
 
-.menu-item:hover::before {
-  border-color: var(--select-focus);
-}
-
-/* Specific styles for delete action on hover */
-.menu-item[data-action^="delete"]:hover {
-  background-color: #fee2e2;
-  box-shadow: inset 1px 1px 2px rgba(185, 28, 28, 0.2), inset -1px -1px 2px rgba(255,255,255,0.05);
-}
-
-.menu-item[data-action^="delete"]:hover::before {
-  border-color: #ef4444;
-}
-
-.menu-divider {
-  height: 2px;
-  background: var(--container-border);
-  box-shadow: 0 0.5px 0 rgba(0,0,0,0.05), 0 -0.5px 0 rgba(255,255,255,0.05);
-  margin: 0;
-}
-
-.menu-item i {
-  color: var(--label-color);
-  width: 16px;
-  text-align: center;
-  transition: color 0.15s ease;
-}
-
-.menu-item:hover i {
-  color: var(--select-focus);
-}
-
-.menu-item[data-action^="delete"] i {
-  color: #b91c1c;
-}
-
-.menu-item[data-action^="delete"]:hover i {
-  color: #ef4444;
-}
-
-/* Dark Mode Adjustments */
-[data-theme="dark"] .context-menu {
-  background: var(--container-bg);
-  border-color: var(--container-border);
-  box-shadow: -4px 4px 0px rgba(0,0,0,0.6), -8px 8px 10px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme="dark"] .menu-item:hover {
-  background-color: #3a3a3a;
-}
-
-[data-theme="dark"] .menu-item:hover::before {
-  border-color: #4a90e2;
-}
-
-[data-theme="dark"] .menu-item[data-action^="delete"]:hover {
-  background-color: #a71d2a;
-}
-
-[data-theme="dark"] .menu-item[data-action^="delete"]:hover::before {
-  border-color: #dc3545;
-}
-
-[data-theme="dark"] .menu-divider {
-  background: #555;
-}
-
-[data-theme="dark"] .menu-item i {
-  color: #b0b0b0;
-}
-
-[data-theme="dark"] .menu-item:hover i {
-  color: #4a90e2;
-}
-
-[data-theme="dark"] .menu-item[data-action^="delete"] i {
-  color: #dc3545;
-}
-
-[data-theme="dark"] .menu-item[data-action^="delete"]:hover i {
-  color: #ef4444;
-}
-
-/* Styles for editable cells */
-.editable-cell input {
+[data-theme="light"] .image-modal img {
+  border: 1px solid #e2e8f0;
   background: white;
-  color: black;
-  border: none;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  outline: none;
 }
 
-#output table {
-  overflow-anchor: none;
+[data-theme="light"] .close-modal {
+  background: white;
+  color: #334155;
+  border: 3px solid #475569;
+  box-shadow: -5px 5px 0 #cbd5e1;
 }
 
-.selected-cell {
-  contain: content;
+[data-theme="light"] .close-modal:hover {
+  box-shadow: -2px 2px 0 #cbd5e1;
 }
 
-/* Undo/Redo buttons */
-.undo-redo-btn {
-  background-color: #ffffff;
-  color: #475569;
-  font-family: monospace;
-  border: 2px solid #475569;
-  padding: 10px;
-  border-radius: 0px;
-  box-shadow: -4px 4px 0 #15191f;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  margin: 12px 8px 12px 0;
-  width: 40px;
-}
-
-.undo-redo-btn:hover {
-  box-shadow: -2px 2px 0 #000000;
-  background-color: #f4f4f4;
-  transform: translateY(-1px);
-}
-
-.undo-redo-btn:active {
-  box-shadow: -1px 1px 0 #000000;
-  transform: translate(-3px, 3px);
-}
-
-.undo-redo-btn:disabled {
-  opacity: 0.5;
+/* Add this to your styles.css file */
+#undoBtn[disabled], 
+#redoBtn[disabled] {
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
-[data-theme="dark"] #convertBtn,
-[data-theme="dark"] .undo-redo-btn,
-[data-theme="dark"] .toolbar-btn {
-  background-color: #333;
-  color: #eee;
-  border: 2px solid #000000;
-  box-shadow: 0 4px 0 #000000;
+#undoBtn.disabled,
+#redoBtn.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-[data-theme="dark"] .toolbar-btn:hover {
-  background: #4a4a4a;
+/* This ensures the buttons can't be clicked when disabled */
+#undoBtn[disabled]:hover, 
+#redoBtn[disabled]:hover,
+#undoBtn.disabled:hover,
+#redoBtn.disabled:hover {
+  background-color: inherit;
+  transform: none;
+  box-shadow: none;
 }
 
-/* Make toolbar inline with convert button */
-.form-row {
-  display: flex;
-  align-items: flex-end;
-  margin-bottom: 15px;
-}
-
-#copyTableBtn {
-  display: inline-block !important;
-}
-
-/* Image Modal */
-.image-modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-  align-items: center;
-  justify-content: center;
-}
-
-.image-modal.show {
-  display: flex;
-}
-
-.image-modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 700px;
-  position: relative;
-}
-
-.image-modal img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: auto;
-}
-
-.close-modal {
-  color: #aaa;
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close-modal:hover,
-.close-modal:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Copyright bar */
-.copyright-bar {
-  position: fixed; /* Fixed to viewport bottom */
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--header-bg); /* Use light mode variable */
-  color: var(--header-text); /* Use light mode variable */
-  padding: 12px 0;
-  border-top: 2px solid var(--header-border); /* Use light mode variable */
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
-  z-index: 100;
-  font-family: 'JetBrains Mono', monospace;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  font-size: 13px;
-  position: relative; /* Make it a positioning context for children */
-}
-
-[data-theme="dark"] .copyright-bar {
-  background: #1e293b; /* Use dark mode variable */
-  color: var(--header-text); /* Use dark mode variable */
-  border-top: 2px solid #0f172a; /* Use dark mode variable */
-  box-shadow: 0 -2px 12px rgba(0,0,0,0.3);
-}
-
-.copyright-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-.copyright-content .divider {
-  margin: 0 5px;
-  opacity: 0.5;
-  user-select: none;
-}
-
-/* Dark Mode Toggle (Circle and bottom left, inside copyright bar) */
-#darkModeToggle {
-  position: absolute; /* Position absolutely within copyright-bar */
-  bottom: 8px; /* Adjusted to be inside with padding */
-  left: 20px;
-  width: 30px; /* Reduced size */
-  height: 30px; /* Reduced size */
-  border-radius: 50%; /* Ensure it's a circle */
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px; /* Adjusted icon size */
-  z-index: 101;
-  background-color: #ffffff;
-  color: #475569;
-  border: 2px solid #475569;
-  box-shadow: -4px 4px 0 #15191f; /* Added shadow */
-  transition: all 0.2s ease;
-}
-
-#darkModeToggle:hover {
-  box-shadow: -2px 2px 0 #000000;
-  background-color: #f4f4f4;
-  transform: translateY(-1px);
-}
-
-#darkModeToggle:active {
-  box-shadow: -1px 1px 0 #000000;
-  transform: translate(-3px, 3px);
-}
-
-[data-theme="dark"] #darkModeToggle {
-  background-color: #333;
-  color: #eee;
-  border: 2px solid #000;
-  box-shadow: -4px 4px 0 #000;
-}
-
-[data-theme="dark"] #darkModeToggle:hover {
-  background-color: #4a4a4a;
-  box-shadow: -2px 2px 0 #000;
-}
-
-[data-theme="dark"] #darkModeToggle:active {
-  box-shadow: -1px 1px 0 #000;
-  transform: translate(-3px, 3px);
-}
-
-/* Return to top button (bottom right, inside copyright bar) */
-#returnToTop {
-  position: absolute;
-  bottom: 8px;
-  right: 20px;
-  background-color: #ffffff;
-  color: #475569;
-  border: 2px solid #475569;
-  border-radius: 50%; /* Ensures it's a circle */
-  width: 30px;
-  height: 30px;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease, all 0.2s ease;
-  z-index: 999;
-  box-shadow: -4px 4px 0 #15191f;
-  overflow: hidden; /* Ensures content stays inside the circle */
-  padding: 0; /* Prevents padding from affecting the shape */
-}
-
-#returnToTop.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-#returnToTop:hover {
-  box-shadow: -2px 2px 0 #000000;
-  background-color: #f4f4f4;
-  transform: translateY(-1px);
-}
-
-#returnToTop:active {
-  box-shadow: -1px 1px 0 #000000;
-  transform: translate(-3px, 3px);
-}
-
-[data-theme="dark"] #returnToTop {
-  background-color: #333;
-  color: #eee;
-  border: 2px solid #000;
-  box-shadow: -4px 4px 0 #000;
-}
-
-[data-theme="dark"] #returnToTop:hover {
-  background-color: #4a4a4a;
-  box-shadow: -2px 2px 0 #000;
-}
-
-[data-theme="dark"] #returnToTop:active {
-  box-shadow: -1px 1px 0 #000;
-  transform: translate(-3px, 3px);
-}
-
-/* Output table spacing above copyright bar */
-#output {
-  margin-bottom: 70px; /* Adjust as needed to provide enough space */
-  margin-left: 50px; /* Adjust based on toolbar width */
-  min-width: calc(100% - 60px); /* Ensures table doesn't get cut off */
-  overflow-x: auto; /* Allows horizontal scrolling if table is too wide */
-  padding-bottom: 20px;
-}
-
-/* Disable pointer events during lock */
-body.locked * {
-  pointer-events: none !important;
-}
-
-/* Column resizing styles */
-th, td {
-  position: relative;
-}
-
-.resize-handle {
-  position: absolute;
-  top: 0;
-  width: 5px;
-  height: 100%;
-  background: transparent;
-  cursor: col-resize;
-  z-index: 1;
-}
-
-.resize-handle.right {
-  right: 0;
-}
-
-.resize-handle.left {
-  left: 0;
-}
-
-.resize-handle:hover,
-.resize-handle.active {
-  background: #3b82f6;
-  width: 8px; /* Slightly wider when active */
-}
-
-[data-theme="dark"] .resize-handle:hover,
-[data-theme="dark"] .resize-handle.active {
-  background: #60a5fa;
-}
-
-/* Makes inputs/textareas resizable with default OS handle */
-#paymentText, #inputText {
-  margin-left: 60px;
-  width: 90% !important;
-  height: auto; /* Allow height to be determined by content or min-height */
-  min-height: 300px; /* Optional: set a minimum height */
-  max-height: 80vh; /* Example: allow it to take up to 80% of the viewport height */
-  overflow-y: auto; /* Add a scrollbar if content exceeds max-height */
-}
-
-/* Force consistent header styling */
-.header-cell {
-  background-color: var(--header-bg) !important;
-  color: var(--header-text) !important;
-  border-bottom: 3px solid var(--header-border) !important;
-  font-weight: 700;
-  padding: 14px 16px;
-  position: relative;
-}
-
-/* Force consistent data cell styling */
-.data-cell {
-  background-color: var(--zebra-odd);
-  border: 1px solid var(--td-border);
-  padding: 10px 14px;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--header-border);
-  border-radius: 4px;
-}
-
+/* Add this at the end of your styles.css */
 /* ===== CELL MOVEMENT ANIMATION ===== */
 @keyframes cellMovement {
   0% { transform: scale(1); }
@@ -1386,48 +1420,280 @@ th, td {
   animation-fill-mode: forwards;
 }
 
-#undoBtn[disabled], 
-#redoBtn[disabled] {
-  opacity: 0.6;
-  cursor: not-allowed;
+/* Makes inputs/textareas resizable with default OS handle */
+/* Input Boxes - Option 2: Grooved Inset (Even More Bluish Theme Adapted) */
+input[type="text"],
+textarea {
+  resize: both;
+  overflow: auto;
+  min-width: 120px;
+  min-height: 40px;
+
+  background-color: var(--container-bg);
+  border: none; /* No explicit border */
+  border-radius: 0px; /* Kept sharp for the grooved look */
+  color: var(--text-color);
+  padding: 8px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  
+  /* Deep inset shadow for a grooved look with more pronounced bluish tint */
+  box-shadow: inset 0 0 10px rgba(50, 80, 120, 0.3), /* Strong inner shadow, more saturated dark blue-gray */
+              inset 0 0 0 1px var(--container-border); /* Subtle inner border, uses theme color */
+  transition: all 0.2s ease;
 }
 
-#undoBtn.disabled,
-#redoBtn.disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  /* Adjust shadow to slightly lighten the "groove" on focus and highlight with theme blue */
+  box-shadow: inset 0 0 8px rgba(50, 80, 120, 0.2), /* Slightly lighter dark blue-gray */
+              inset 0 0 0 1px var(--select-focus); /* Highlight with theme's select blue */
 }
 
-/* This ensures the buttons can't be clicked when disabled */
-#undoBtn[disabled]:hover, 
-#redoBtn[disabled]:hover,
-#undoBtn.disabled:hover,
-#redoBtn.disabled:hover {
-  background-color: inherit;
-  transform: none;
-  box-shadow: none;
+/* Dark Mode Adjustments */
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] textarea {
+  background-color: var(--container-bg);
+  color: var(--text-color);
+  /* Dark mode grooved look with more pronounced light bluish tint */
+  box-shadow: inset 0 0 10px rgba(150, 190, 230, 0.2), /* Strong inner shadow, more saturated light blue-gray */
+              inset 0 0 0 1px var(--container-border); /* Uses theme border */
 }
 
-th::after {
-  content: "";
+[data-theme="dark"] input[type="text"]:focus,
+[data-theme="dark"] textarea:focus {
+  /* Adjust dark mode focus shadows */
+  box-shadow: inset 0 0 8px rgba(150, 190, 230, 0.12), /* Slightly lighter light blue-gray */
+              inset 0 0 0 1px var(--select-focus); /* Highlight with theme's select blue */
+}
+
+/* Optional: Slightly smaller year input */
+#yearInput {
+  min-width: 80px;    /* ← Smaller width */
+  min-height: 25px;
+}
+
+/* Add below existing menu-item styles */
+.menu-item[data-action^="insert"] i {
+  color: #3b82f6;
+  width: 16px;
+  text-align: center;
+}
+/* Force consistent header styling */
+.header-cell {
+  background-color: var(--header-bg) !important;
+  color: var(--header-text) !important;
+  border-bottom: 3px solid var(--header-border) !important;
+  font-weight: 700;
+  padding: 14px 16px;
+  position: relative;
+}
+
+/* Force consistent data cell styling */
+.data-cell {
+  background-color: var(--zebra-odd);
+  border: 1px solid var(--td-border);
+  padding: 10px 14px;
+}
+
+/* Disable pointer events during lock */
+body.locked * {
+  pointer-events: none !important;
+}
+
+
+/* Column resizing styles */
+th, td {
+  position: relative;
+}
+
+.resize-handle {
   position: absolute;
-  bottom: -3px;
-  left: 0;
+  top: 0;
   right: 0;
-  height: 3px;
-  background: var(--select-focus);
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  width: 5px;
+  height: 100%;
+  background: transparent;
+  cursor: col-resize;
+  z-index: 1;
 }
 
-tr:first-child:hover th::after {
-  opacity: 0.7;
+.resize-handle:hover,
+.resize-handle.active {
+  background: #3b82f6;
 }
 
-footer.copyright-bar {
+[data-theme="dark"] .resize-handle:hover,
+[data-theme="dark"] .resize-handle.active {
+  background: #60a5fa;
+}
+
+
+.resize-handle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  background: transparent;
+  cursor: col-resize;
+  z-index: 1;
+}
+
+.resize-handle:hover,
+.resize-handle.active {
+  background: #3b82f6;
+  width: 8px; /* Slightly wider when active */
+}
+
+[data-theme="dark"] .resize-handle:hover,
+[data-theme="dark"] .resize-handle.active {
+  background: #60a5fa;
+}
+
+th {
+  position: relative;
+  min-width: 50px; /* Prevent columns from getting too narrow */
+}
+
+.resize-handle {
+  position: absolute;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background: transparent;
+  cursor: col-resize;
+  z-index: 1;
+}
+
+.resize-handle.right {
+  right: 0;
+}
+
+.resize-handle.left {
+  left: 0;
+}
+
+.resize-handle:hover,
+.resize-handle.active {
+  background: #3b82f6;
+  width: 8px;
+}
+
+[data-theme="dark"] .resize-handle:hover,
+[data-theme="dark"] .resize-handle.active {
+  background: #60a5fa;
+}
+
+th {
+  position: relative;
+  min-width: 50px; /* Prevent columns from getting too narrow */
+}
+
+/* Add to styles.css */
+#output {
+  margin-left: 50px; /* Adjust based on toolbar width */
+  min-width: calc(100% - 60px); /* Ensures table doesn't get cut off */
+  overflow-x: auto; /* Allows horizontal scrolling if table is too wide */
+}
+
+/* Replace existing .toolbar-separator with this */
+.toolbar-separator {
+  width: 30px; /* Horizontal length */
+  height: 2px; /* Thickness */
+  background: #475569;
+  margin: 8px 0; /* Space above & below */
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.toolbar {
+  display: none;
+}
+
+#paymentText, #inputText {
+  margin-left: 60px;
+  width: 90% !important;
+  height: auto; /* Allow height to be determined by content or min-height */
+  min-height: 300px; /* Optional: set a minimum height */
+  max-height: 80vh; /* Example: allow it to take up to 80% of the viewport height */
+  overflow-y: auto; /* Add a scrollbar if content exceeds max-height */
+}
+
+.header-cell {
+  background-color: var(--header-bg) !important;
+  color: var(--header-text) !important;
+  border-bottom: 3px solid var(--header-border) !important;
+  font-weight: 700;
+  padding: 14px 16px;
+  position: relative;
+}
+
+.data-cell {
+  background-color: var(--zebra-odd);
+  border: 1px solid var(--td-border);
+  padding: 10px 14px;
+}
+
+
+/* ======================= */
+/* Copyright Footer Styles */
+/* ======================= */
+.copyright-bar {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  width: 100vw;
+  background: var(--header-bg);
+  color: var(--header-text);
+  padding: 12px 0;
+  border-top: 2px solid var(--header-border);
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+  font-family: 'JetBrains Mono', monospace;
 }
+
+.copyright-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.divider {
+  opacity: 0.5;
+  user-select: none;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .copyright-bar {
+  background: #1e293b;
+  border-top-color: #0f172a;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.3);
+}
+
+/* Ensure content doesn't hide behind footer */
+body {
+  padding-bottom: 50px !important;
+}
+
+/* For output container specifically */
+#output {
+  padding-bottom: 20px;
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--header-border);
+  border-radius: 4px;
+}
+
