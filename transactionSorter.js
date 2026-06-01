@@ -23,6 +23,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    /**
+     * Parse a number from a string that may contain:
+     * - Dollar signs ($) anywhere (e.g., "$84.38", "64.44$", "($34.43)")
+     * - Brackets () to indicate negative numbers (e.g., "(34.34)", "($84.38)")
+     * - Standard minus sign for negative numbers (e.g., "-34.34")
+     * 
+     * Returns a number (positive or negative), or NaN if parsing fails.
+     */
+    function parseNumberFromString(str) {
+        // Remove all dollar signs ($) from the string
+        let cleaned = str.replace(/\$/g, '');
+        
+        // Check if the cleaned string is wrapped in parentheses, which indicates a negative number
+        // Match pattern: optional whitespace, opening parenthesis, any characters, closing parenthesis
+        const bracketMatch = cleaned.match(/^\s*\((.*)\)\s*$/);
+        
+        let numericValue;
+        
+        if (bracketMatch) {
+            // It's a bracketed value (negative number)
+            const innerValue = bracketMatch[1];
+            numericValue = parseFloat(innerValue);
+            if (!isNaN(numericValue)) {
+                numericValue = -Math.abs(numericValue); // Make it negative
+            }
+        } else {
+            // No brackets, standard parsing (handles minus sign naturally)
+            numericValue = parseFloat(cleaned);
+        }
+        
+        return numericValue;
+    }
+
     convertBtn.addEventListener('click', () => {
         const input = inputText.value.trim();
         if (!input) {
@@ -32,7 +65,18 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const numbers = input.split('\n').map(line => parseFloat(line.trim())).filter(num => !isNaN(num));
+        const numbers = [];
+        const lines = input.split('\n');
+        
+        for (const line of lines) {
+            const trimmedLine = line.trim();
+            if (trimmedLine === '') continue;
+            
+            const num = parseNumberFromString(trimmedLine);
+            if (!isNaN(num)) {
+                numbers.push(num);
+            }
+        }
 
         if (numbers.length === 0) {
             showToast("No valid numbers found in the input.", "error");
@@ -41,14 +85,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        let tableHtml = '<table><thead><tr><th>Debit</th><th>Credit</th></tr></thead><tbody>';
+        let tableHtml = '</td><thead><tr><th>Debit</th><th>Credit</th></tr></thead><tbody>';
 
         numbers.forEach(num => {
             tableHtml += '<tr>';
             if (num >= 0) {
-                tableHtml += `<td>${num.toFixed(2)}</td><td></td>`; // Debit, empty Credit
+                // Positive number goes to Debit column (empty Credit)
+                tableHtml += `<td>${num.toFixed(2)}</td><td></td>`;
             } else {
-                tableHtml += `<td></td><td>${Math.abs(num).toFixed(2)}</td>`; // Empty Debit, Credit (positive)
+                // Negative number goes to Credit column as positive value (empty Debit)
+                tableHtml += `<td></td><td>${Math.abs(num).toFixed(2)}</td>`;
             }
             tableHtml += '</tr>';
         });
